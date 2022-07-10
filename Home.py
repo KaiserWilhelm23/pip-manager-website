@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-
+st.set_page_config(layout='wide')
 st.title("Welcome to PIP Manager")
 st.markdown("""---""")
 
