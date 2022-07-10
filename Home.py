@@ -1,37 +1,24 @@
 import streamlit as st
 import pandas as pd
+from PIL import Image
 
 
-from streamlit_option_menu import option_menu
+st.title("Welcome to PIP Manager")
+st.markdown("""---""")
 
-
-
-# 2. horizontal menu
-selected2 = option_menu(None, ["Home", "Installation"], 
-    icons=None,
-    menu_icon="cast", default_index=0, orientation="horizontal",
-    styles={"nav-link-selected": {"background-color": " #0047AB"}})
-
-
-if selected2 == "Home": 
-
-
-    st.title("Welcome to PIP Manager")
-
-    st.write(
+st.write(
     """
 PIP Manager is designed to make Python Package handling easier by just a click of a button!!
 
     """
-        )
+    )
 
 
-    col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
-    with col1:
-        f = st.expander(label="Available Features")
-        
-        f.write(
+with col1:
+    st.header("Available Features")
+    st.write(
 """
 - Installing packages
 - Upgrading packages (Installing if they are not already)
@@ -47,42 +34,39 @@ PIP Manager is designed to make Python Package handling easier by just a click o
 
 """
         )
-        sg = st.expander(label="Saftey/Guidelines")
-        sg.write(
-            """
-- We do not recommend installing any packages you are not familiar with.
-- We do not recommend installing packages that may require log in information, unless its trusted by the Python Community
-- We are not resopnsible for faulty or virus enbeded packages that are installed through this Software.
 
-            """
-        )
+    
+    st.markdown("""---""")
+    
 
-    with col2:
-        s = st.expander(label="Requirements")
-        #st.header("Requirements")
+with col2:
+    st.header("Requirements")
 
-        s.write(
+    st.write(
 """
 This app does require some third party packages. But don't worry the app will detect if you have them or not and it will ask you if you want to install them in a CMD. From here you can also start in CLI mode instead of installing the packages. NOTE: features are limited in CLI Mode. Here are the required packages:
 """
 
         )
 
-        s.code("ttkthemes")
-        s.code("win32gui & win32con")
+    st.code("ttkthemes")
+    st.code("win32gui & win32con")
+    st.markdown("""---""")
+    st.header("Saftey/Guidelines")
+    st.write(
+        """
+- We do not recommend installing any packages you are not familiar with.
+- We do not recommend installing packages that may require log in information, unless its trusted by the Python Community
+- We are not resopnsible for faulty or virus enbeded packages that are installed through this Software.
+        
+        """
+    )
 
 
+with col3:
+    image = Image.open('Capture.png')
+    st.image(image, caption='PIP Manager view')
 
 
-if selected2 == "Installation":
-    st.title("Installation")
-
-
-    col1, col2 = st.columns(2)
-
-
-    with col1:
-        st.header("Zip File Download")
-        st.button(label="Download", key="https://github.com/blaze005/PIP-Manager-App/archive/refs/tags/3.1.zip")
 
 
